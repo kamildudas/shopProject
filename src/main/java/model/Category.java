@@ -8,14 +8,14 @@ public class Category {
     private String name;
 
     public Category(String name) {
-        validateName(name);
+        validateProductName(name);
 
         lastId++;
         this.categoryId = lastId;
         this.name = name;
     }
 
-    private void validateName(String name) {
+    private void validateProductName(String name) {
         if (name == null || name.isBlank() || name.length() == 0 || name.length() >= 50) {
             throw new IllegalArgumentException("Name must not be null, blank, empty, or exceed 50 characters.");
         }
