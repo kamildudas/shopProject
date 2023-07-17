@@ -1,3 +1,7 @@
+package model;
+
+import model.Category;
+
 public class Product {
     private int productId;
     private double price;
