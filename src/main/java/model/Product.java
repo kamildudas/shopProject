@@ -1,4 +1,6 @@
-import org.example.Category;
+package model;
+
+import model.Category;
 
 public class Product {
     private static int nextId = 1;
