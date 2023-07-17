@@ -12,7 +12,6 @@ public class Product {
         this.productId = nextId++;
         this.setPrice(price);
         this.setName(name);
-        this.setCategory(category);
         this.setQuantity(quantity);
     }
     public int getProductId() {
@@ -55,4 +54,3 @@ public class Product {
     }
 }
 
-}
