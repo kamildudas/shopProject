@@ -1,7 +1,5 @@
 package model;
 
-import model.Category;
-
 public class Product {
     private static int nextId = 1;
     private int productId;
@@ -38,11 +36,23 @@ public class Product {
         if (name != null && !name.isBlank() && name.length() > 0 && name.length() < 50 && name.matches("[a-zA-Z]+")) {
             this.name = name;
         } else {
-            throw new IllegalArgumentException("Invalid name. Name must not be null, blank, empty, or exceed 50 characters. Only alphabetical characters are allowed.");
+            throw new IllegalArgumentException("Invalid name.");
         }
     }
     public Category getCategory() {
         return category;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+    public void setQuantity(int quantity) {
+        if (quantity > 0) {
+            this.quantity = quantity;
+        } else {
+            throw new IllegalArgumentException("Quantity must be greater than 0.");
+        }
+    }
+}
 
 }
