@@ -13,7 +13,6 @@ public class Product {
         this.price = price;
         this.name = name;
         this.quantity = quantity;
-
     }
 
     public int getProductId() {
