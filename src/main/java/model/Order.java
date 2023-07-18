@@ -1,5 +1,7 @@
 package model;
 
+import util.RandomUtil;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,25 +13,25 @@ public class Order {
     private OrderStatus orderStatus;
     private final Map<Product, Integer> products = new HashMap<>();
 
-    public Order(String orderNumber, Client client, OrderStatus orderStatus) {
+    public Order(final String orderNumber, final Client client, final OrderStatus orderStatus) {
         lastOrderId++;
         this.orderId = lastOrderId;
-        this.orderNumber = orderNumber;
+        this.orderNumber = RandomUtil.randomizeString(8);
         this.client = client;
         this.orderStatus = orderStatus;
     }
 
 
-    void add(Product product, int quantity) {
-        if (quantity <= 0){
-            throw new IllegalArgumentException ("Quantity must be positive");
+    void add(final Product product, final int quantity) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be positive");
         }
-            if (products.containsKey(product)) {
-                Integer integer = products.get(product);
-                products.put(product, integer + quantity);
-            } else {
-                products.put(product, quantity);
-            }
+        if (products.containsKey(product)) {
+            Integer integer = products.get(product);
+            products.put(product, integer + quantity);
+        } else {
+            products.put(product, quantity);
+        }
     }
 
     void remove(Product product) {

@@ -1,10 +1,14 @@
 package service;
 
+import model.Category;
+import model.Product;
+
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class ProductService {
-    public class ProjectService {
-        private List<Product> products;
+    private List<Product> products;
 
     public void ProductService() {
         products = new ArrayList<>();
@@ -23,11 +27,10 @@ public class ProductService {
                 break;
             }
         }
-            if (productToRemove != null) {
+        if (productToRemove != null) {
             products.remove(productToRemove);
-        }
-            else {
-                throw new IllegalArgumentException("Product with ID " + productId + " not found.");
+        } else {
+            throw new IllegalArgumentException("Product with ID " + productId + " not found.");
         }
     }
 
