@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Order {
-    private static int lastOrderId = 0;
+    private static int lastOrderId = 1;
+
     private final int orderId;
     private final String orderNumber;
     private final Client client;
@@ -14,8 +15,7 @@ public class Order {
     private final Map<Product, Integer> products = new HashMap<>();
 
     public Order(final String orderNumber, final Client client, final OrderStatus orderStatus) {
-        lastOrderId++;
-        this.orderId = lastOrderId;
+        this.orderId = lastOrderId++;
         this.orderNumber = RandomUtil.randomizeString(8);
         this.client = client;
         this.orderStatus = orderStatus;
@@ -42,5 +42,15 @@ public class Order {
         return products.entrySet().stream()
                 .mapToDouble(entry -> entry.getKey().getPrice() * entry.getValue())
                 .sum();
+    }
+    public int getOrderId() {
+        return orderId;
+    }
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }
