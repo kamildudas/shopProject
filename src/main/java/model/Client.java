@@ -9,6 +9,10 @@ public record Client(String name, String surname, String address) {
         validateAddress(address);
     }
 
+    public static Client client1 = new Client("Jan", "Kowalski", "Warszawa");
+    public static Client client2 = new Client("Piotr", "Nowak", "Kraków");
+    public static Client client3 = new Client("Krzysztof", "Jerzyna", "Szczecin");
+
     private void validateName(String clientName) {
         if (clientName == null || clientName.isBlank() || clientName.length() == 0 || clientName.length() >= 50) {
             throw new IllegalArgumentException("Name must not be null, blank, empty, or exceed 50 characters.");
