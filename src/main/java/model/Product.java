@@ -6,13 +6,12 @@ public class Product {
     private double price;
     private String name;
     private Category category;
-    private int quantity;
 
-    public Product(int productId, double price, String name, String category, int quantity) {
+    public Product(double price, String name, Category category) {
         this.productId = nextId++;
         this.price = price;
         this.name = name;
-        this.quantity = quantity;
+        this.category = category;
     }
 
     public int getProductId() {
@@ -45,18 +44,6 @@ public class Product {
 
     public Category getCategory() {
         return category;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        if (quantity > 0) {
-            this.quantity = quantity;
-        } else {
-            throw new IllegalArgumentException("Quantity must be greater than 0.");
-        }
     }
 }
 

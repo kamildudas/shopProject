@@ -22,7 +22,7 @@ public class Order {
     }
 
 
-    void add(final Product product, final int quantity) {
+    public void add(final Product product, final int quantity) {
         if (quantity <= 0) {
             throw new IllegalArgumentException("Quantity must be positive");
         }

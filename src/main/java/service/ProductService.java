@@ -8,31 +8,30 @@ import java.util.List;
 
 
 public class ProductService {
-    private List<Product> products;
+    private final List<Product> products = generateProductList();
+    private CategoryService categoryService;
 
-    Product car1 = new Product( 123, 30000.0, "Toyota Prius", "Hybrid", 5);
-    Product car2 = new Product(234, 25000.0, "Honda Accord", "Petrol", 3);
-    Product car3 = new Product(345, 40000.0, "Ford Mustang", "Diesel", 2);
-    Product car4 = new Product(456, 35000.0, "Chevrolet Camaro", "Diesel", 4);
-    Product car5 = new Product(567,28000.0, "Tesla", "Electric", 6);
-    Product car6 = new Product(678, 45000.0, "BMW X5", "Hybrid", 1);
-    Product car7 = new Product(789,20000.0, "Hyundai I30", "Petrol", 8);
-    Product car8 = new Product(890, 38000.0, "Audi A4", "Diesel", 2);
-    Product car9 = new Product(901, 32000.0, "Nissan Leaf", "Electric", 4);
-    Product car10 = new Product(210, 42000.0, "Mercedes-Benz C-Class", "Petrol", 3);
-
-    List<Product> productsList = new ArrayList<>();
-
-
-    public void ProductService() {
-        products = new ArrayList<>();
+    public ProductService(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
-    public void addProduct(double price, String name, Category category, int quantity) {
-        Product product;
-        int productId = 0;
-        product = new Product(productId ,price, name, category, quantity);
+    public List<Product> generateProductList() {
+        Category petrol = categoryService.getCategories().get(0);
+        Category electric = categoryService.getCategories().get(1);
+        Category hybrid = categoryService.getCategories().get(2);
+        Category diesel = categoryService.getCategories().get(3);
+        return List.of(new Product(30000.0, "Toyota Prius", petrol),
+                new Product(10000.0, "Mercedes-Benz", hybrid),
+                new Product(10000.0, "BMW", electric),
+                new Product(5000.0, "Audi A4", diesel));
+
+    }
+
+
+    public Product addProduct(double price, String name, Category category) {
+        Product product = new Product(price, name, category);
         products.add(product);
+        return product;
     }
 
     public void removeProduct(int productId) {
