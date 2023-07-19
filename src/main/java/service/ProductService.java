@@ -11,15 +11,15 @@ public class ProductService {
     public List<Product> products = generateProductList();
     private CategoryService categoryService;
 
-    public ProductService(CategoryService categoryService) {
-        this.categoryService = categoryService;
+    public ProductService() {
+
     }
 
     public List<Product> generateProductList() {
-        Category petrol = categoryService.getCategories().get(0);
-        Category electric = categoryService.getCategories().get(1);
-        Category hybrid = categoryService.getCategories().get(2);
-        Category diesel = categoryService.getCategories().get(3);
+        Category petrol = CategoryService.categories.get(0);
+        Category electric = CategoryService.categories.get(1);
+        Category hybrid = CategoryService.categories.get(2);
+        Category diesel = CategoryService.categories.get(3);
         return List.of(new Product(30000.0, "Toyota Prius", petrol),
                 new Product(10000.0, "Mercedes-Benz", hybrid),
                 new Product(10000.0, "BMW", electric),
