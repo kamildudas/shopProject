@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class ProductService {
-    private final List<Product> products = generateProductList();
+    public List<Product> products = generateProductList();
     private CategoryService categoryService;
 
     public ProductService(CategoryService categoryService) {
