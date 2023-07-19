@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class CategoryService {
-    private final List<Category> categories = generateCategory();
+    public static final List<Category> categories = generateCategory();
 
-    public List<Category> generateCategory() {
+    public static List<Category> generateCategory() {
 
         return Stream.of("petrol", "electric", "hybrid", "diesel")
                 .map(Category::new)

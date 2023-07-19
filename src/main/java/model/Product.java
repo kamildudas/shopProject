@@ -2,10 +2,10 @@ package model;
 
 public class Product {
     private static int nextId = 1;
-    private int productId;
+    private final int productId;
     private double price;
     private String name;
-    private Category category;
+    private final Category category;
 
     public Product(double price, String name, Category category) {
         this.productId = nextId++;
