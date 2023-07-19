@@ -8,16 +8,12 @@ public class Category {
     private String name;
 
     public Category(String name) {
-        validateProductName(name);
+        validateCategoryName(name);
         this.categoryId = lastId++;
         this.name = name;
     }
 
-    private void checkProductName() {
-        validateProductName(name);
-    }
-
-    private void validateProductName(String name) {
+    private void validateCategoryName(String name) {
         if (name == null) {
             throw new IllegalArgumentException("Name cannot be null");
         }
@@ -43,4 +39,5 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
 }
