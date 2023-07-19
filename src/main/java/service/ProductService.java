@@ -21,6 +21,8 @@ public class ProductService {
     Product car9 = new Product(901, 32000.0, "Nissan Leaf", "Electric", 4);
     Product car10 = new Product(210, 42000.0, "Mercedes-Benz C-Class", "Petrol", 3);
 
+    List<Product> productsList = new ArrayList<>();
+
 
     public void ProductService() {
         products = new ArrayList<>();
