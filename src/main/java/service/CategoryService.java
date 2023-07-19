@@ -8,6 +8,11 @@ import java.util.List;
 public class CategoryService {
     private final List<Category> categories;
 
+    Category petrol = new Category( "Petrol");
+    Category electric = new Category("Electric");
+    Category hybrid = new Category("Hybrid");
+    Category diesel = new Category("Diesel");
+
     public CategoryService() {
         categories = new ArrayList<>();
     }
