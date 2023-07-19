@@ -4,17 +4,16 @@ import model.Category;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class CategoryService {
-    private final List<Category> categories;
+    private final List<Category> categories = generateCategory();
 
-    Category petrol = new Category( "Petrol");
-    Category electric = new Category("Electric");
-    Category hybrid = new Category("Hybrid");
-    Category diesel = new Category("Diesel");
+    public List<Category> generateCategory() {
 
-    public CategoryService() {
-        categories = new ArrayList<>();
+        return Stream.of("petrol", "electric", "hybrid", "diesel")
+                .map(Category::new)
+                .toList();
     }
 
     public void addCategory(String name) {
@@ -49,5 +48,9 @@ public class CategoryService {
             }
         }
         return null;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
     }
 }
