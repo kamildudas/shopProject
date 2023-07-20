@@ -1,7 +1,14 @@
+import model.Category;
+import service.CategoryService;
+import service.ProductService;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     private static final Scanner scanner = new Scanner(System.in);
+    private final CategoryService categoryService = new CategoryService();
+    private final ProductService productService = new ProductService();
     public void showMainMenu() {
         boolean exit = false;
         while (!exit) {
@@ -15,8 +22,8 @@ public class Menu {
 
             switch (choice) {
                 case 1 -> showOrdersSubMenu();
-               /* case 2 -> showCategoriesSubMenu();
-                case 3 -> ShowProductsSubMenu();*/
+                case 2 -> showCategoriesSubMenu();
+               // case 3 -> ShowProductsSubMenu();*/
                 case 4 -> exit = true;
                 default -> System.out.println("Wrong choice!");
             }
@@ -58,4 +65,26 @@ public class Menu {
         */
         }
     }
+    public void showCategoriesSubMenu() {
+        boolean back = false;
+        while (!back) {
+            System.out.println("[1] List of categories");
+            System.out.println("[2] Add category");
+            System.out.println("[3] Remove category");
+            System.out.println("[4] Get category");
+
+            String choice = scanner.next();
+            String[] words = choice.split(",");
+
+            scanner.nextLine();
+
+            switch (Integer.parseInt(words[0])) {
+                case 1 -> categoryService.getAllCategories();
+               /* case 2 -> CategoryService.addCategory();
+                case 3 -> CategoryService.removeCategory();
+                case 4 -> CategoryService.get */
+            }
+        }
+    }
+
 }
