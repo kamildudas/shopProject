@@ -12,8 +12,6 @@ import static util.RandomUtil.randomizeString;
 
 public class OrderService {
     private final List<Order> orders = new ArrayList<>();
-
-
     public Order addOrder(Client client, OrderStatus orderStatus) {
         Order order = new Order(randomizeString(8), client, orderStatus);
         orders.add(order);
