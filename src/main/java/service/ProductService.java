@@ -14,8 +14,6 @@ public class ProductService {
     public ProductService() {
     }
 
-
-
     public static List<Product> generateProductList() {
 
         List<Product> productList = new ArrayList<>();
@@ -49,8 +47,10 @@ public class ProductService {
         }
     }
 
-    public List<Product> getAllProducts() {
-        return products;
+    public void getAllProducts() {
+        for (Product product : products) {
+            System.out.println( "ID: " + product.getProductId()+" Name: " + product.getName() +" Price: "+ product.getPrice());
+        }
     }
 
     public Product getProductById(int productId) {
