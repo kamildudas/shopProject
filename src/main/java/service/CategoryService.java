@@ -1,6 +1,7 @@
 package service;
 
 import model.Category;
+import model.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class CategoryService {
         categoryList.add(new Category("hybrid"));
         categoryList.add(new Category("diesel"));
         return categoryList;
+
     }
 
     public void addCategory(String name) {
@@ -39,9 +41,12 @@ public class CategoryService {
         }
     }
 
-    public List<Category> getAllCategories() {
-        return categories;
+    public void getAllCategories() {
+        for (Category category : categories) {
+            System.out.println( "Category " + category.getName());
+        }
     }
+
 
     public Category getCategoryById(int categoryId) {
         for (Category category : categories) {
