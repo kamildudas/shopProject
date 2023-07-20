@@ -5,7 +5,7 @@ public class Product {
     private final int productId;
     private double price;
     private String name;
-    private final Category category;
+    private Category category;
 
     public Product(double price, String name, Category category) {
         this.productId = nextId++;

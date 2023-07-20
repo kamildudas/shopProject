@@ -12,19 +12,19 @@ public class ProductService {
     private CategoryService categoryService;
 
     public ProductService() {
-
     }
 
-    public List<Product> generateProductList() {
-        Category petrol = CategoryService.categories.get(0);
-        Category electric = CategoryService.categories.get(1);
-        Category hybrid = CategoryService.categories.get(2);
-        Category diesel = CategoryService.categories.get(3);
-        return List.of(new Product(30000.0, "Toyota Prius", petrol),
-                new Product(10000.0, "Mercedes-Benz", hybrid),
-                new Product(10000.0, "BMW", electric),
-                new Product(5000.0, "Audi A4", diesel));
 
+
+    public static List<Product> generateProductList() {
+
+        List<Product> productList = new ArrayList<>();
+        productList.add(new Product(10000, "Toyota Prius", CategoryService.categories.get(0)   ));
+        productList.add(new Product(25000, "BMW X3", CategoryService.categories.get(1)));
+        productList.add(new Product(5000, "Volkswagen Multivan",CategoryService.categories.get(2) ));
+        productList.add(new Product(100000, "Audi A4", CategoryService.categories.get(3)));
+
+        return productList;
     }
 
 
