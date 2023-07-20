@@ -29,15 +29,16 @@ public class Menu {
         boolean back = false;
         while (!back) {
             System.out.println("[1] List of orders");
-            System.out.println("[2] Specific order");
+            System.out.println("[2, ID] Specific order");
             System.out.println("[3] Add order");
-            System.out.println("[4] Remove order");
-            System.out.println("[5] Edit order");
-            System.out.println("[6] Change status");
-            System.out.println("[7] Show status");
-            System.out.println("[8] Add product to order");
-            System.out.println("[9] Back");
-            int choice = scanner.nextInt();
+            System.out.println("[4, ID] Remove order");
+            System.out.println("[5] Change status");
+            System.out.println("[6] Show status");
+            System.out.println("[7] Back");
+
+            String choice = scanner.next();
+            String[] words = choice.split(",");
+
             scanner.nextLine();
 /*
             switch (choice) {
