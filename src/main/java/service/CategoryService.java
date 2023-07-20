@@ -10,10 +10,12 @@ public class CategoryService {
     public static final List<Category> categories = generateCategory();
 
     public static List<Category> generateCategory() {
-
-        return Stream.of("petrol", "electric", "hybrid", "diesel")
-                .map(Category::new)
-                .toList();
+        List<Category> categoryList = new ArrayList<>();
+        categoryList.add(new Category("petrol"));
+        categoryList.add(new Category("electric"));
+        categoryList.add(new Category("hybrid"));
+        categoryList.add(new Category("diesel"));
+        return categoryList;
     }
 
     public void addCategory(String name) {
