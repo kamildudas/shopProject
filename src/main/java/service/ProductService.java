@@ -12,14 +12,19 @@ public class ProductService {
     private CategoryService categoryService;
 
     public ProductService() {
-
     }
 
-    public static List<Product> generateProductList() {
-        List<Product> productList = new ArrayList<>();
-        productList.add(new Product(10000, "Toyota Prius"), );
 
-return productList;
+
+    public static List<Product> generateProductList() {
+
+        List<Product> productList = new ArrayList<>();
+        productList.add(new Product(10000, "Toyota Prius", CategoryService.categories.get(0)   ));
+        productList.add(new Product(25000, "BMW X3", CategoryService.categories.get(1)));
+        productList.add(new Product(5000, "Volkswagen Multivan",CategoryService.categories.get(2) ));
+        productList.add(new Product(100000, "Audi A4", CategoryService.categories.get(3)));
+
+        return productList;
     }
 
 
