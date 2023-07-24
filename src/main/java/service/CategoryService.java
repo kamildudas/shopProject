@@ -48,13 +48,14 @@ public class CategoryService {
     }
 
 
-    public Category getCategoryById(int categoryId) {
+    public void getCategoryById(int categoryId) {
         for (Category category : categories) {
             if (category.getCategoryId() == categoryId) {
-                return category;
+                System.out.println("Name category with ID " + categoryId + ": " + category.getName());
+                return;
             }
         }
-        return null;
+        System.out.println("No category found with ID  " + categoryId);
     }
 
     public List<Category> getCategories() {
