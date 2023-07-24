@@ -50,18 +50,18 @@ public class Menu {
             String[] words = choice.split(",");
 
             scanner.nextLine();
-/*
-            switch (choice) {
+
+            switch (Integer.parseInt(choice)) {
                 case 1 -> orderService.getAllOrders();
-                case 2 ->orderService.getOrderById();
-                case 3 ->orderService.addOrder();
-                case 4 ->orderService.removeOrder();
-                case 5 ->orderService.changeOrderStatus();
-                case 6 ->orderService.getOrderStatus();
+                case 2 ->orderService.getOrderById(Integer.parseInt(words[1]));
+               // case 3 ->orderService.addOrder();
+                case 4 ->orderService.removeOrder(Integer.parseInt(words[1]));
+                //case 5 ->orderService.changeOrderStatus();
+                case 6 ->orderService.getOrderStatus(Integer.parseInt(words[1]));
                 case 7 -> back = true;
                 default -> System.out.println("Wrong choice!");
             }
-*/
+
             System.out.println();
         }
 
