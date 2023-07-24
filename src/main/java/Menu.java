@@ -1,5 +1,6 @@
-import model.Category;
+import jdk.jfr.Category;
 import service.CategoryService;
+import service.OrderService;
 import service.ProductService;
 
 import java.util.List;
@@ -9,6 +10,7 @@ public class Menu {
     private static final Scanner scanner = new Scanner(System.in);
     private final CategoryService categoryService = new CategoryService();
     private final ProductService productService = new ProductService();
+    private final OrderService orderService = new OrderService();
 
     public void showMainMenu() {
         boolean exit = false;
@@ -50,23 +52,21 @@ public class Menu {
             scanner.nextLine();
 /*
             switch (choice) {
-                case 1 ->ORDER_SERVICE.getAllOrders();
-                case 2 ->ORDER_SERVICE.getOrderById();
-                case 3 ->ORDER_SERVICE.addOrder();
-                case 4 ->ORDER_SERVICE.removeOrder();
-                case 5 ->ORDER_SERVICE.
-                case 6 ->ORDER_SERVICE.changeOrderStatus();
-                case 7 ->ORDER_SERVICE.getOrderStatus()
-                case 8 -> ;
-                case 9 -> back = true;
+                case 1 -> orderService.getAllOrders();
+                case 2 ->orderService.getOrderById();
+                case 3 ->orderService.addOrder();
+                case 4 ->orderService.removeOrder();
+                case 5 ->orderService.changeOrderStatus();
+                case 6 ->orderService.getOrderStatus();
+                case 7 -> back = true;
                 default -> System.out.println("Wrong choice!");
             }
-
+*/
             System.out.println();
         }
-        */
-        }
+
     }
+
 
     public void showCategoriesSubMenu() {
         boolean back = false;
@@ -75,6 +75,7 @@ public class Menu {
             System.out.println("[2] Add category");
             System.out.println("[3] Remove category");
             System.out.println("[4] Get category");
+            System.out.println("[5] Back");
 
             String choice = scanner.next();
             String[] words = choice.split(",");
@@ -91,26 +92,29 @@ public class Menu {
             }
         }
     }
-        public void showProductsSubMenu() {
-            boolean back = false;
-            while (!back) {
-                System.out.println("[1] List of products");
-                System.out.println("[2, ID] Specific product");
-                System.out.println("[3, price, name, category] Add product");
-                System.out.println("[4, ID] Remove product");
-                System.out.println("[5] Back");
 
-                String choice = scanner.next();
-                String[] words = choice.split(",");
+    public void showProductsSubMenu() {
+        boolean back = false;
+        while (!back) {
+            System.out.println("[1] List of products");
+            System.out.println("[2, ID] Specific product");
+            System.out.println("[3, price, name, category] Add product");
+            System.out.println("[4, ID] Remove product");
+            System.out.println("[5] Back");
 
-                scanner.nextLine();
+            String choice = scanner.next();
+            String[] words = choice.split(",");
 
-                switch (Integer.parseInt(words[0])) {
-                    case 1 -> productService.getAllProducts();
-                   // case 2 -> productService.addProduct(Double.parseDouble(words[1]), words[2], )
-                    case 5 -> back = true;
+            scanner.nextLine();
 
-                }
+            switch (Integer.parseInt(words[0])) {
+                case 1 -> productService.getAllProducts();
+                case 2 -> productService.getProductById(Integer.parseInt(words[1]));
+                case 3 -> productService.addProduct(Double.parseDouble(words[1]), words[2], Integer.parseInt(words[3]));
+                case 4 -> productService.removeProduct(Integer.parseInt(words[1]));
+                case 5 -> back = true;
+
             }
         }
     }
+}

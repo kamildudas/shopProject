@@ -1,9 +1,11 @@
 package service;
 
 
+import model.Category;
 import model.Client;
 import model.Order;
 import model.OrderStatus;
+import util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,15 @@ import static util.RandomUtil.randomizeString;
 
 public class OrderService {
     private final List<Order> orders = new ArrayList<>();
+    public static List<Order> generateOrder() {
+        List<Order> orderList = new ArrayList<>();
+        orderList.add(new Order(RandomUtil.randomizeString(8), new Client("Jan", "Kowalski", "Warszawa"), OrderStatus.PAID));
+        orderList.add(new Order(RandomUtil.randomizeString(8), new Client("Piotr", "Nowak", "Kraków"), OrderStatus.SHIPPED));
+        orderList.add(new Order(RandomUtil.randomizeString(8), new Client("Zofia", "Malinowska", "Wrocław"), OrderStatus.CANCELED));
+        orderList.add(new Order(RandomUtil.randomizeString(8), new Client("Bolesław", "Krzywousty", "Chrząszczyrzewoszyce"), OrderStatus.IN_PREPARATION));
+        return orderList;
+
+    }
     public Order addOrder(String name, String surname,String address) {
         Order order = new Order(randomizeString(8), new Client(name, surname, address), OrderStatus.IN_PREPARATION);
         orders.add(order);
@@ -22,8 +33,17 @@ public class OrderService {
         orders.removeIf(order -> order.getOrderId() == orderId);
     }
 
-    public List<Order> getAllOrders() {
-        return orders;
+    public void getAllOrders() {
+        //   List<Order> orders = getAllOrders();
+        if (orders.isEmpty()) {
+            System.out.println("No orders.");
+        } else {
+            for (Order order : orders) {
+                System.out.println("Order number: " + order.getOrderId());
+            //    System.out.println("Klient: " + );
+              //  System.out.println("Order status: " + getOrderStatus());
+            }
+        }
     }
 
     public Order getOrderById(int orderId) {
@@ -35,7 +55,12 @@ public class OrderService {
 
     public OrderStatus getOrderStatus(int orderId) {
         Order order = getOrderById(orderId);
-        return order != null ? order.getOrderStatus() : null;
+        if (order != null) {
+            return order.getOrderStatus();
+        } else {
+            System.out.println("Order with ID " + orderId + " not found.");
+            return null;
+        }
     }
 
     public void changeOrderStatus(int orderId, OrderStatus newStatus) {
