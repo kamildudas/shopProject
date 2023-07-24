@@ -16,7 +16,7 @@ public class TestProductService {
         ProductService productService = new ProductService();
 
         //When
-        productService.addProduct(product.getPrice(), product.getName(), category);
+        productService.addProduct(product.getPrice(), product.getName(), 1);
 
         //Then
         Product resultProduct = null;

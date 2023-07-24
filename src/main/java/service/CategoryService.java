@@ -52,7 +52,7 @@ public class CategoryService {
         for (Category category : categories) {
             if (category.getCategoryId() == categoryId) {
                 System.out.println("Name category with ID " + categoryId + ": " + category.getName());
-                return;
+            return;
             }
         }
         System.out.println("No category found with ID  " + categoryId);
