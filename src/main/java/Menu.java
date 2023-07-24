@@ -42,9 +42,8 @@ public class Menu {
             System.out.println("[2, ID] Specific order");
             System.out.println("[3] Add order");
             System.out.println("[4, ID] Remove order");
-            System.out.println("[5] Change status");
-            System.out.println("[6] Show status");
-            System.out.println("[7] Back");
+            System.out.println("[5] Show status");
+            System.out.println("[6] Back");
 
             String choice = scanner.next();
             String[] words = choice.split(",");
@@ -56,9 +55,8 @@ public class Menu {
                 case 2 ->orderService.getOrderById(Integer.parseInt(words[1]));
                // case 3 ->orderService.addOrder();
                 case 4 ->orderService.removeOrder(Integer.parseInt(words[1]));
-                //case 5 ->orderService.changeOrderStatus();
-                case 6 ->orderService.getOrderStatus(Integer.parseInt(words[1]));
-                case 7 -> back = true;
+                case 5 ->orderService.getOrderStatus(Integer.parseInt(words[1]));
+                case 6 -> back = true;
                 default -> System.out.println("Wrong choice!");
             }
 
