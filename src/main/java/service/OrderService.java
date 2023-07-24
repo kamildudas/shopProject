@@ -45,7 +45,7 @@ public class OrderService {
 
     }
 
-    public Order addOrder(String name, String surname,String address) {
+    public Order addOrder(String name, String surname,String address, Map<Product, Integer> products) {
         Order order = new Order(randomizeString(8), new Client(name, surname, address), OrderStatus.IN_PREPARATION,new HashMap<>());
         orders.add(order);
         return order;
