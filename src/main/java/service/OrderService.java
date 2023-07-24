@@ -1,30 +1,52 @@
 package service;
 
 
-import model.Category;
-import model.Client;
-import model.Order;
-import model.OrderStatus;
+import model.*;
 import util.RandomUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import static service.CategoryService.categories;
 import static util.RandomUtil.randomizeString;
 
 public class OrderService {
-    private final List<Order> orders = new ArrayList<>();
+    private final List<Order> orders = generateOrder();
+
     public static List<Order> generateOrder() {
         List<Order> orderList = new ArrayList<>();
-        orderList.add(new Order(RandomUtil.randomizeString(8), new Client("Jan", "Kowalski", "Warszawa"), OrderStatus.PAID));
-        orderList.add(new Order(RandomUtil.randomizeString(8), new Client("Piotr", "Nowak", "Kraków"), OrderStatus.SHIPPED));
-        orderList.add(new Order(RandomUtil.randomizeString(8), new Client("Zofia", "Malinowska", "Wrocław"), OrderStatus.CANCELED));
-        orderList.add(new Order(RandomUtil.randomizeString(8), new Client("Bolesław", "Krzywousty", "Chrząszczyrzewoszyce"), OrderStatus.IN_PREPARATION));
+        Map<Product, Integer> productsMap = new HashMap<>();
+        productsMap.put(ProductService.products.get(1), 2);
+        orderList.add(new Order(RandomUtil.randomizeString(8),
+                new Client("Jan", "Kowalski", "Warszawa"),
+                OrderStatus.PAID,
+                productsMap));
+        Map<Product, Integer> productsMap2 = new HashMap<>();
+        productsMap2.put(ProductService.products.get(0), 1);
+        orderList.add(new Order(RandomUtil.randomizeString(8),
+                new Client("Jan", "Kowalski", "Warszawa"),
+                OrderStatus.PAID,
+                productsMap2));
+        Map<Product, Integer> productsMap3 = new HashMap<>();
+        productsMap3.put(ProductService.products.get(2), 5);
+        orderList.add(new Order(RandomUtil.randomizeString(8),
+                new Client("Jan", "Kowalski", "Warszawa"),
+                OrderStatus.PAID,
+                productsMap3));
+        Map<Product, Integer> productsMap4 = new HashMap<>();
+        productsMap4.put(ProductService.products.get(3), 4);
+        orderList.add(new Order(RandomUtil.randomizeString(8),
+                new Client("Jan", "Kowalski", "Warszawa"),
+                OrderStatus.PAID,
+                productsMap4));
         return orderList;
 
     }
+
     public Order addOrder(String name, String surname,String address) {
-        Order order = new Order(randomizeString(8), new Client(name, surname, address), OrderStatus.IN_PREPARATION);
+        Order order = new Order(randomizeString(8), new Client(name, surname, address), OrderStatus.IN_PREPARATION,new HashMap<>());
         orders.add(order);
         return order;
     }
@@ -34,14 +56,13 @@ public class OrderService {
     }
 
     public void getAllOrders() {
-        //   List<Order> orders = getAllOrders();
         if (orders.isEmpty()) {
             System.out.println("No orders.");
         } else {
             for (Order order : orders) {
                 System.out.println("Order number: " + order.getOrderId());
-            //    System.out.println("Klient: " + );
-              //  System.out.println("Order status: " + getOrderStatus());
+                System.out.println("Klient: " + order.getClient() );
+                System.out.println("Order status: " + order.getOrderStatus());
             }
         }
     }

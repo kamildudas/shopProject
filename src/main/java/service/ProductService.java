@@ -10,8 +10,7 @@ import static service.CategoryService.categories;
 
 
 public class ProductService {
-    public List<Product> products = generateProductList();
-    private CategoryService categoryService;
+    public static List<Product> products = generateProductList();
 
     public ProductService() {
     }
